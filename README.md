@@ -30,12 +30,28 @@ Webserver Implementation
 https://gist.github.com/dergachev/7028596
 
 
+Poodle Implementation
+----------------------
+
+#### POODLE Security Bulletins
+https://www.openssl.org/~bodo/ssl-poodle.pdf
+https://security.googleblog.com/2014/10/this-poodle-bites-exploiting-ssl-30.html
+
+#### POODLE Explanation
+https://patzke.org/implementing-the-poodle-attack.html
+https://en.wikipedia.org/wiki/POODLE
+https://www.troyhunt.com/everything-you-need-to-know-about/
+
+#### POODLE POC Resources
+https://patzke.org/implementing-the-poodle-attack.html
+https://github.com/EiNSTeiN-/poodle
+https://github.com/mpgn/poodle-PoC
 
 
 Bleichenbacher
 ----------------------
 
-#### Bleichenbacher Explaination
+#### Bleichenbacher Explanation
 https://crypto.stackexchange.com/questions/12688/can-you-explain-bleichenbachers-cca-attack-on-pkcs1-v1-5
 
 
