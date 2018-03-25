@@ -30,7 +30,7 @@ Webserver Implementation
 https://gist.github.com/dergachev/7028596
 
 
-Poodle Implementation
+POODLE Implementation
 ----------------------
 
 #### POODLE Security Bulletins
