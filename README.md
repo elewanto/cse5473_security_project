@@ -35,6 +35,7 @@ POODLE Implementation
 
 #### POODLE Security Bulletins
 https://www.openssl.org/~bodo/ssl-poodle.pdf
+
 https://security.googleblog.com/2014/10/this-poodle-bites-exploiting-ssl-30.html
 
 #### POODLE Explanation
