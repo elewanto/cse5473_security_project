@@ -14,6 +14,7 @@ https://github.com/chorn/mitm-detector
 
 #### separate paper --many authors
 Detecting and Defeating Advanced Man-In-TheMiddle Attacks against TLS
+http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6916404
 
 
 #### Researchers detect SSL MitM attacks, method implemented by Facebook
