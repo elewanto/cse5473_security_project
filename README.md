@@ -43,7 +43,7 @@ https://en.wikipedia.org/wiki/POODLE
 https://www.troyhunt.com/everything-you-need-to-know-about/
 
 #### POODLE POC Resources
-http://nerdoholic.org/uploads/dergln/beast_part2/ssl_jun21.pdf
+http://nerdoholic.org/uploads/dergln/beast_part2/ssl_jun21.pdf  
 https://patzke.org/implementing-the-poodle-attack.html  
 https://github.com/EiNSTeiN-/poodle  
 https://github.com/mpgn/poodle-PoC
