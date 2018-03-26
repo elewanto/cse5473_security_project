@@ -3,17 +3,17 @@
 MITM Detection
 ----------------------
 
-https://caddyserver.com/docs/mitm-detection
-	Caddy is based on https://jhalderm.com/pub/papers/interception-ndss17.pdf  (Many smart authors it seems)
-	Github: https://github.com/mholt/caddy
-	look at endsection--inpsired by other projects
+https://caddyserver.com/docs/mitm-detection  
+	Caddy is based on https://jhalderm.com/pub/papers/interception-ndss17.pdf  (Many smart authors it seems)  
+	Github: https://github.com/mholt/caddy  
+	look at endsection--inpsired by other projects  
 
 #### Separate Small MITM detection tools
 https://github.com/chorn/mitm-detector
 
 
 #### separate paper --many authors
-Detecting and Defeating Advanced Man-In-TheMiddle Attacks against TLS
+Detecting and Defeating Advanced Man-In-TheMiddle Attacks against TLS  
 http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6916404
 
 
