@@ -8,13 +8,15 @@
 
 # Written for deprecated Python 2.7.9 and OpenSSL 1.0.2a implementations that supported SSLv3 protcol:
 
-# AES symmetric encryption cipher (will use CBC mode)
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES # AES symmetric encryption cipher (CBC mode)
+import binascii               # hexadecimal string processing
+import sys                    # command line arguments
+import array                  
 
-import binascii
+# global variables
+BLOCK_SIZE = 16   # AES block size is 16 bytes / 128 bits
 
-import sys
-import array
+
 
 
 print 'test success'
