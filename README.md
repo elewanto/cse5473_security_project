@@ -59,6 +59,11 @@ https://crypto.stackexchange.com/questions/12688/can-you-explain-bleichenbachers
 #### Bleichenbacher paper
 http://archiv.infsec.ethz.ch/education/fs08/secsem/bleichenbacher98.pdf
 
+#### Bleichenbacher Simulated Attack Code
+https://gist.github.com/vishnuvp/5ab5d1a05fef490e25b7
+
+#### Practical Padding Oracle Attacks on RSA
+http://secgroup.dais.unive.it/wp-content/uploads/2012/11/Practical-Padding-Oracle-Attacks-on-RSA.html
 
 
 Understand Concepts 
