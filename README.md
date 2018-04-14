@@ -68,6 +68,9 @@ http://secgroup.dais.unive.it/wp-content/uploads/2012/11/Practical-Padding-Oracl
 #### Bleichenbacher Simulated Attack Code
 https://github.com/duesee/bleichenbacher
 
+### Bleichenbacher Simulated Code Between Server and Client
+https://github.com/diogt52/bleichenbacher_attack
+
 Understand Concepts 
 ------------------
 
