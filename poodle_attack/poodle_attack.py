@@ -203,6 +203,7 @@ def poodleAttack(clientServerSocket):
     bottomWin.refresh()
   numBytesToDecrypt = i*AES_CBC_BLOCK_SIZE - AES_CBC_BLOCK_SIZE - 3
   bottomWin.addstr('Number bytes to decrypt: ' + str(numBytesToDecrypt) + '\n')
+  printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, 0)  
   bottomWin.addstr('...press key to continue...')
   bottomWin.refresh()
   screen.nodelay(0)
