@@ -327,7 +327,7 @@ def printPlainMessage(path, pathFillBytes, body, bodyFillBytes, i, k):
   if startInd < 0:
     startInd = 0
   mac = '|----20-BYTE MAC---|'
-  pad = '######PAD#####15'
+  pad = ' #####PAD#####15'
 
   message = path + pathFillBytes + plaintextCookie + body + bodyFillBytes
   messHead = message[:startInd]
