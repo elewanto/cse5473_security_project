@@ -1,11 +1,32 @@
 # CSE 5473
-# Team Password is Pasword
-# Program: base program called from shell script
+# Team: Password is Password
+# Mohit Jangid, Eric Lewantowicz, Joseph Shaffer
+
 # Resources: uses the following resources:
-#   Padding Oracle Attack Lab approach
-#   "This POODLE Bites: Exploiting the SSL 3.0 Fallback" (Google Security Bulletin)
-#   "Here Come the XOR Ninjas" [BEAST Attack]
-#   "ImperialViolet - POODLE attacks on SSLv3 (14 Oct 2014)""
+#   Padding Oracle Attack Lab 2
+#   Papers:
+#     "This POODLE Bites: Exploiting the SSL 3.0 Fallback" (Google Security Bulletin)
+#     "Here Come the XOR Ninjas" [BEAST Attack]
+#     "ImperialViolet - POODLE attacks on SSLv3 (14 Oct 2014)""
+# Dependences:
+#   - Curses graphics module
+#   - Pycrypto
+#   - Ubuntu aplay for sound effects
+#   - Python 2.7
+# Execution Instructions:
+#     1. Ensure two Ubuntu terminal windows are large enough to support necessary rows and columns for curses display
+#         - approx 120 columns x 30 rows
+#     2. Run server one one terminal using following command:
+#         $ poodle_attack.py -server <IP> <port> <delay_usecs>
+#     3. Run client on second terminal using following command:
+#         $ poodle_attack.py -client <IP> <port> <secret cookie contents> <recordSplit=True/False>
+#            - setting final recordSplit parameter to "False" will demonstrate a successful POODLE attack, decrypting the provided
+#              secret cookie bytes
+#             - setting final recordSplit paramenter to "True" will demonstrate a proposed 6/n-6 record splitting defense, and not
+#               bytes will be successfully decrypted
+#     4. Client will pause at a couple points in execution.  Press any key to resume simulation
+#     5. Tested with 15-character secret cookie value: "SquirrelTeamSix".  Other length cookie strings may cause problems with the
+#        algorithm, graphics displays, or runtime errors, as the program is not written robustly to handle different input lengths
 
 # Written for deprecated Python 2.7.9 and OpenSSL 1.0.2a implementations that supported SSLv3 protcol:
 # Simulating OpenSSL ssl3 AES-128-CBC-SHA
