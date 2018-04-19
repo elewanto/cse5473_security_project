@@ -583,7 +583,7 @@ def setScreenClient(stdscr, ip, port):
 
   topWin.addstr(0, 0, 'CLIENT BROWSER')
   topWin.addstr(0, 30, 'Secret:')
-  topWin.addstr(0, 38, plaintextCookie, curses.color_pair(10))
+  topWin.addstr(0, 38, plaintextCookie, curses.color_pair(11))
   if recordSplit:
     topWin.addstr(0, 65, 'Record Splitting Defense', curses.color_pair(19))    
   middleWin.addstr(0,0,"ATTACK PROGRESS")
