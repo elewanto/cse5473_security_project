@@ -311,6 +311,7 @@ def clientCmd(argv):
     connection = TLSConnection(sock)
     
     settings = HandshakeSettings()
+    
     if psk:
         settings.pskConfigs = [(psk_ident, psk, psk_hash)]
     settings.useExperimentalTackExtension = True
@@ -450,17 +451,23 @@ def serverCmd(argv):
     if is_valid_hostname(address[0]):
         sni = address[0]
     settings = HandshakeSettings()
+
+
     settings.minKeySize = 128
     settings.maxKeySize = 128
     settings.cipherNames = ['aes128']
     settings.minVersion = (3,0)
     settings.maxVersion = (3,0)
-    settings.useExperimentalTackExtension=False
+    
     settings.keyExchangeNames = ['rsa']
-    # other.cipherImplementations = ['openssl']
     # settings.macNames = ['md5']
     settings.useExtendedMasterSecret = False
     settings.rsaSchemes = ['pkcs1']
+
+
+
+
+    settings.useExperimentalTackExtension=False
     settings.dhParams = dhparam
     if psk:
         settings.pskConfigs = [(psk_ident, psk, psk_hash)]
