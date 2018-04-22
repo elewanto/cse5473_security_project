@@ -2,12 +2,14 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import SHA
 
-hex_data = "779f65c6cae8b649df83a06b6db9dfa0456f416191b4b34adf30607acd0cbd1be7e7ed9df40d2a8904c69822102d56cc13748931160dc9fd003e266205b6716801c082ed1f997759aab570449510f05206b44f3121ab0f822c1adf540ca5f43859eeb6de188ce72bb8c55b629cb0593341b27c544faeae06967ca00a19bb5fe438b411fe3d555e63a48fa96bb205b462d2f03e5663efd2f8bc252f0d8ca85997776c92a4e2815c47988b6d3090a0d6d6597b11c7139eea707f71b95f382f8fa44e0072ebe1da049eb3c7fb1c9c055ec5fa5cf833f654ea81e6ffd00cdb835abf5a358b30a17b7ed74e558a81d3351ae407c141775fa23ec26d59b3b71128404e"
+# hex_data = "779f65c6cae8b649df83a06b6db9dfa0456f416191b4b34adf30607acd0cbd1be7e7ed9df40d2a8904c69822102d56cc13748931160dc9fd003e266205b6716801c082ed1f997759aab570449510f05206b44f3121ab0f822c1adf540ca5f43859eeb6de188ce72bb8c55b629cb0593341b27c544faeae06967ca00a19bb5fe438b411fe3d555e63a48fa96bb205b462d2f03e5663efd2f8bc252f0d8ca85997776c92a4e2815c47988b6d3090a0d6d6597b11c7139eea707f71b95f382f8fa44e0072ebe1da049eb3c7fb1c9c055ec5fa5cf833f654ea81e6ffd00cdb835abf5a358b30a17b7ed74e558a81d3351ae407c141775fa23ec26d59b3b71128404e"
+hex_data = "afe2ca9f5f39faa55766a09a5580ff571103616f4e671002af60359dfa2b40ee5edd33de0d0cb532d28a29a32c4006320b1f78eec533d83f9f6399f6764d4d260df0e32248d1599101fe07095e3f56bb57290431af7143bbc7f83b3d75e09ecb0270256986da37d7b6ad24d350a4b1f99a8a9ed39ee1c71d7afbd8a7faf37e22"
 
 data_to_verify = bytes.fromhex(hex_data)
 
 
-verification_key_file = "/home/mohit/VirtualBox VMs/vm_shared_folder/tlslite-ng-master/tests/serverX509Key.pem"
+verification_key_file = "/home/mohit/Dropbox/network_security_OSU/main_project/cse5473_security_project/Bleichenbacher/tlslite-ng-master/scripts/mj_keys/private.pem"
+# verification_key_file = "/home/mohit/VirtualBox VMs/vm_shared_folder/tlslite-ng-master/tests/serverX509Key.pem"
 
 rsa_key = RSA.importKey(open(verification_key_file, "rb").read())
 
@@ -17,11 +19,7 @@ print( len(decrypted))
 print(rsa_key.n)
 print(decrypted)
 
-# b'\x02\x9d\xb3Xp\x16\xbc\x0cIY~\r\xa7\xbd\x12]\x89\xd3\xd8{\x9a.k8\x9e\x03\xa2\x06\xbd\xdc`\xf4\x8c\xb5\xa3\x9fGap\xcf?g\x1c\xb7\x90\xfb\x90k\xc1\x8b8I\x10k\x85\xaf#\xb1\xacX&u\x16\x0e?w>\x9a\xf5\x9c\x8cYvEF}\x06\xe2\xd1\xd3\xa6G\x0fTO\xd8\xf7\x8c\\\x9e\xedMd\\`\xb5\x88\xb3\x9d:\x97\xe5\xfa\xcc\xa5\xf9&\xe4P\xb7\xb0\xe3\xc4\\\xae\x17f\xc7\x10.\x820\x1d\xaf\xa7k\xe9\x84L\x86}\xcd\x9f\x07\x89\xac\xe5\xa6\xf0\x03\x18\x17z\xabG\x9a\x86\x8c\xb4}~\xb1J\xfc\x12Dt\x94^ff\xbb\xb0\t\x10\xa6\xceQ\x0b\x8b\xe3\xf1\xc4]\xf3\x0f^%G\xbf\xc9\x1cV\x01\xf1~\xac\xa23\x19{~\xd2\xd1\xadF\x05\xfd\xe0\xbe\xce\xd8\x0c\x0f\xf7\xa7\x00\x03\x00K\x17K2\xc5\xef\xda$\x1e-B\xd1f\x93\xc9\x90\xecr%\xd4q .\xdb\x83P\xe8\xb10\xdf\xae\xb2VD\x97\x8f~\x98\xe5\x98V\x16\x08\x01\xdcN'
-
-
-
-
+# b'\x02\x9d\xb3Xp\x16\xbc\x0cIY~\r\xa7\xbd\x12]\x89\xd3\xd8{\x9a.k8\x9e\x03\xa2\x06\xbd\xdc`\xf4\x8c\xb5\xa3\x9fGap\xcf?g\x1c\xb7\x90\xfb\x90k\xc1\x8b8I\x10k\x85\xaf#\xb1\xacX&u\x16\x0e?w>\x9a\xf5\x9c\x8cYvEF}\x06\xe2\xd1\xd3\xa6G\x0fTO\xd8\xf7\x8c\\\x9e\xedMd\\`\xb5\x88\xb3\x9d\x97\xe5\xfa\xcc\xa5\xf9&\xe4P\xb7\xb0\xe3\xc4\\\xae\x17f\xc7\x10.\x820\x1d\xaf\xa7k\xe9\x84L\x86}\xcd\x9f\x07\x89\xac\xe5\xa6\xf0\x03\x18\x17z\xabG\x9a\x86\x8c\xb4}~\xb1J\xfc\x12Dt\x94^ff\xbb\xb0\t\x10\xa6\xceQ\x0b\x8b\xe3\xf1\xc4]\xf3\x0f^%G\xbf\xc9\x1cV\x01\xf1~\xac\xa23\x19{~\xd2\xd1\xadF\x05\xfd\xe0\xbe\xce\xd8\x0c\x0f\xf7\xa7\x00\x03\x00K\x17K2\xc5\xef\xda$\x1e-B\xd1f\x93\xc9\x90\xecr%\xd4q .\xdb\x83P\xe8\xb10\xdf\xae\xb2VD\x97\x8f~\x98\xe5\x98V\x16\x08\x01\xdcN'
 
 
 print("\n")

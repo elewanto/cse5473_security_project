@@ -37,6 +37,7 @@ def find_new_short_intervals(x, interval_set):
     B3 = padding_end + 1
     newM = set([])
     r_count = 0
+
     for (a,b) in interval_set: # for all intervals which will be shrinked
         for r in range(ceil((a*x - B3 + 1),n),
                        floor((b*x - B2),n) + 1):
@@ -59,9 +60,10 @@ def find_new_short_intervals(x, interval_set):
 
 def search_multiplier(msg, n, x):
     print ("[-] Starting search for x (from value %i)" % x)
+    
     num_of_interations = 1          # counter for iterations
     while True:
-        next_landing_msg = (x * msg) % n
+        next_landing_msg = ( x * msg) % n
         if padding_oracle(next_landing_msg):   # call the (simulated) oracle
             break    # padding is correct, we have found x
         num_of_interations += 1
@@ -71,6 +73,7 @@ def search_multiplier(msg, n, x):
     return x
 
 def search_multiplier_binary(m, n, x, a, b):
+    
     B2 = padding_start
     B3 = padding_end + 1
     r = ceil((b*x - B2)*2,n) # starting value for r
@@ -98,13 +101,15 @@ f = open("public.pem", "r")
 key = RSA.importKey(f.read())
 
 
-hex_data =' 00 02 09 ad 82 9f fb 3a 98 b9 1a 1b e5 3c 6d 61'\
-' 88 45 6f 19 2e 85 0c 9d 23 89 98 a3 95 58 74 21 86 97 04'\
-' 3f 5a 11 b4 93 6e fd 3f be c0 0b ed 3c 10 03 19 99 13 9c'\
-' 04 4a 79 bb 94 75 cb 50 c7 2f d5 d8 6e 38 d3 c5 6c ab 5d'\
-' 19 45 b9 31 d4 63 d9 58 6c 05 29 a2 c8 ca 8b b3 17 6a ba'\
-' 6d 3e 32 de eb e0 bc a2 20 22 86 58 2a 08 93 33 f7 ca 7b'\
-' 40 70 f2 72 00 68 65 6c 6c 6f 20 77 6f 72 6c 64 21'\
+# hex_data =' 00 02 09 ad 82 9f fb 3a 98 b9 1a 1b e5 3c 6d 61'\
+# ' 88 45 6f 19 2e 85 0c 9d 23 89 98 a3 95 58 74 21 86 97 04'\
+# ' 3f 5a 11 b4 93 6e fd 3f be c0 0b ed 3c 10 03 19 99 13 9c'\
+# ' 04 4a 79 bb 94 75 cb 50 c7 2f d5 d8 6e 38 d3 c5 6c ab 5d'\
+# ' 19 45 b9 31 d4 63 d9 58 6c 05 29 a2 c8 ca 8b b3 17 6a ba'\
+# ' 6d 3e 32 de eb e0 bc a2 20 22 86 58 2a 08 93 33 f7 ca 7b'\
+# ' 40 70 f2 72 00 68 65 6c 6c 6f 20 77 6f 72 6c 64 21'\
+
+hex_data = '00 02 d2 64 73 18 65 c8 b8 85 c4 5a 36 4e fd f1 57 8f c0 a8 de 5f 93 b4 57 4c 8c 43 33 49 e2 c8 70 0c 9a f7 aa 6a de 04 50 87 05 cf 84 da 4b f8 da 12 49 f5 97 1f 27 ca 61 49 df 8d b6 72 59 9b 14 ac 9b 2c d1 a3 99 8b b0 fa c5 9e c5 1d 1b 00 03 00 a4 19 2d 28 1b 10 41 47 3d f6 bd d1 55 08 6c 7a 4c 68 13 05 f2 bd db d8 a8 bf 15 88 6c 91 cd 2e 80 10 6d 10 01 02 4b d7 1b 2d 92 e1 08 ef'
 
 
 m = int(hex_data.replace(' ',''),16)
