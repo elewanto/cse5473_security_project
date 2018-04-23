@@ -1935,7 +1935,8 @@ class TLSConnection(TLSRecordLayer):
 
         else:
             assert(False)
-                        
+
+
         # Exchange Finished messages      
         for result in self._serverFinished(premasterSecret, 
                                 clientHello.random, serverHello.random,

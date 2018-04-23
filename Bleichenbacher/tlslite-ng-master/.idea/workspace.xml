@@ -10,21 +10,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mathtls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tlslite/mathtls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="504" selection-start-line="504" selection-end-line="504" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file leaf-file-name="tls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/tls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-324">
-              <caret line="489" selection-start-line="489" selection-end-line="489" />
+            <state relative-caret-position="453">
+              <caret line="489" column="63" lean-forward="true" selection-start-line="489" selection-start-column="63" selection-end-line="489" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -32,17 +23,8 @@
       <file leaf-file-name="tlsconnection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tlslite/tlsconnection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="1939" selection-start-line="1939" selection-end-line="1939" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cipherfactory.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tlslite/utils/cipherfactory.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="108">
+              <caret line="1940" selection-start-line="1940" selection-end-line="1940" />
             </state>
           </provider>
         </entry>
@@ -77,6 +59,7 @@
       <list>
         <option value="$PROJECT_DIR$/scripts/tls.py" />
         <option value="$PROJECT_DIR$/tlslite/recordlayer.py" />
+        <option value="$PROJECT_DIR$/tlslite/tlsconnection.py" />
       </list>
     </option>
   </component>
@@ -198,16 +181,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tlslite/tlsconnection.py</url>
-          <line>1862</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tlslite/tlsconnection.py</url>
-          <line>1916</line>
-          <option name="timeStamp" value="25" />
+          <line>1940</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="30" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -636,7 +614,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tlslite/mathtls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="7485">
           <caret line="504" selection-start-line="504" selection-end-line="504" />
         </state>
       </provider>
@@ -650,15 +628,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/tls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <caret line="489" selection-start-line="489" selection-end-line="489" />
+        <state relative-caret-position="453">
+          <caret line="489" column="63" lean-forward="true" selection-start-line="489" selection-start-column="63" selection-end-line="489" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tlslite/tlsconnection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="1939" selection-start-line="1939" selection-end-line="1939" />
+        <state relative-caret-position="108">
+          <caret line="1940" selection-start-line="1940" selection-end-line="1940" />
         </state>
       </provider>
     </entry>

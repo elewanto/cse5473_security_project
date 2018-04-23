@@ -5,3 +5,78 @@ af:e2:ca:9f:5f:39:fa:a5:57:66:a0:9a:55:80:ff:57:11:03:61:6f:4e:67:10:02:af:60:35
 
 Corresponding premaster key
 bytearray(b'\x03\x00\xa4\x19-(\x1b\x10AG=\xf6\xbd\xd1U\x08lzLh\x13\x05\xf2\xbd\xdb\xd8\xa8\xbf\x15\x88l\x91\xcd.\x80\x10m\x10\x01\x02K\xd7\x1b-\x92\xe1\x08\xef')
+
+
+-------------------------------------------------------2----------------------------------------------------------
+
+
+14:ce:de:ef:3c:6b:40:fe:73:29:45:46:f9:08:0b:a7:59:3b:c9:9b:82:d5:81:1f:47:e9:61:ab:07:f2:5f:83:7f:a5:2d:14:3f:0f:f2:b2:77:37:a9:8f:bb:f1:59:7b:ce:27:fe:a1:42:f3:47:7b:97:94:a0:d3:61:28:91:0d:d9:7b:2f:39:f3:2a:7f:7b:de:0c:f4:5e:3f:74:fa:26:74:3c:a3:60:19:c4:99:42:f5:37:78:7f:20:ce:1d:14:41:49:76:61:b3:b5:2a:49:bc:95:14:13:86:e7:a9:cd:45:70:0d:45:c4:aa:b2:ab:89:f3:9c:35:d5:5b:cb:99
+
+/usr/bin/python2.7 /media/sf_vm_shared_folder/pycharm-community-2017.3.4/helpers/pydev/pydevd.py --multiproc --qt-support=auto --client 127.0.0.1 --port 33548 --file /media/sf_Bleichenbacher/tlslite-ng-master/scripts/tls.py server -k ./mj_keys/private.pem -c ./mj_keys/mj_X509.pem -t ../tests/TACK1.pem 10.1.2.5:443
+pydev debugger: process 2769 is connecting
+Connected to pydev debugger (build 181.4203.547)
+I am an HTTPS test server, I will listen on 10.1.2.5:443
+Serving files from /media/sf_Bleichenbacher/tlslite-ng-master/scripts
+Using certificate and private key...
+About to handshake...
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+Python 2.7.6 (default, Jun 22 2015, 17:58:13) 
+[GCC 4.8.2] on linux2
+premasterSecret
+bytearray(b'\x03\x00\xdeH@\xb1\x87\xa8A\xf7^\xb0\x90\x1b\x07\x1d\xc6\xcf\x9en\t\xa3%\xcf\x94\xec\xa8\xd3\xc1\xd9\xe7\xba>\xf2K"\xa5\x9bY\xf8?\xa2\x03t\x89\xe84"')
+  Handshake time: 0.467 seconds
+  Version: SSL 3.0
+  Cipher: aes128 pycrypto
+  Ciphersuite: TLS_RSA_WITH_AES_128_CBC_SHA
+  No client certificate provided by peer
+  Server X.509 SHA1 fingerprint: e66cda5083ba6a037b84279373e61392c7010819
+  Next-Protocol Negotiated: None
+  Encrypt-then-MAC: False
+  Extended Master Secret: False
+10.1.2.15 - - [22/Apr/2018 21:27:38] "GET / HTTP/1.1" 200 -
+About to handshake...
+  Handshake time: 0.004 seconds
+  Version: SSL 3.0
+  Cipher: aes128 pycrypto
+  Ciphersuite: TLS_RSA_WITH_AES_128_CBC_SHA
+
+
+
+
+-------------------------------------------------------3----------------------------------------------------------
+
+
+11:01:8e:96:8f:91:f5:48:a2:f9:d4:a7:10:cf:6e:ee:75:aa:8c:f2:ff:22:a4:76:6d:a9:a9:77:26:b5:29:23:d0:6a:d7:ad:35:f2:fc:2d:e0:df:11:a0:42:40:7f:93:72:1b:c1:45:60:5d:65:5b:36:bd:61:5d:ec:2b:05:94:c2:b5:51:b9:4e:89:7b:8f:e1:db:47:43:59:6f:07:2f:73:e4:5f:7e:59:8d:b9:a1:f9:02:7d:ad:7f:30:e7:a9:d7:06:d3:e3:c9:77:86:cb:95:ae:d4:e1:9b:d9:94:cf:83:b0:ff:b5:23:13:12:0b:7f:1d:2d:d2:c2:02:f0:dd
+
+
+/usr/bin/python2.7 /media/sf_vm_shared_folder/pycharm-community-2017.3.4/helpers/pydev/pydevd.py --multiproc --qt-support=auto --client 127.0.0.1 --port 39572 --file /media/sf_Bleichenbacher/tlslite-ng-master/scripts/tls.py server -k ./mj_keys/private.pem -c ./mj_keys/mj_X509.pem -t ../tests/TACK1.pem 10.1.2.5:443
+pydev debugger: process 2820 is connecting
+Connected to pydev debugger (build 181.4203.547)
+I am an HTTPS test server, I will listen on 10.1.2.5:443
+Serving files from /media/sf_Bleichenbacher/tlslite-ng-master/scripts
+Using certificate and private key...
+About to handshake...
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+Python 2.7.6 (default, Jun 22 2015, 17:58:13) 
+[GCC 4.8.2] on linux2
+premasterSecret
+bytearray(b'\x03\x00\xf5ye\xb9(\x08\xcd(nk\xfd\x18\xdb\xd9L\x18Xvc\x1a\xd3\xfc]\xb5b\xcd\xa2\x88\x13\xa1(\xac\xc2*mf\xfa"\xe0\xe4\xc8 I\x84\xdf]')
+  Handshake time: 0.205 seconds
+  Version: SSL 3.0
+  Cipher: aes128 pycrypto
+  Ciphersuite: TLS_RSA_WITH_AES_128_CBC_SHA
+  No client certificate provided by peer
+  Server X.509 SHA1 fingerprint: e66cda5083ba6a037b84279373e61392c7010819
+  Next-Protocol Negotiated: None
+  Encrypt-then-MAC: False
+  Extended Master Secret: False
+10.1.2.15 - - [22/Apr/2018 21:29:27] "GET / HTTP/1.1" 200 -
+About to handshake...
+  Handshake time: 0.004 seconds
+  Version: SSL 3.0
+  Cipher: aes128 pycrypto
+  Ciphersuite: TLS_RSA_WITH_AES_128_CBC_SHA
+  No client certificate provided by peer
+  Server X.509 SHA1 fingerprint: e66cda5083ba6a037b84279373e61392c7010819
+  Next-Protocol Negotiated: None
+  Encrypt-then-MAC: False
