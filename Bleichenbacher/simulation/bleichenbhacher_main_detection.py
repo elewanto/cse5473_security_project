@@ -11,7 +11,7 @@ PADDING_ORACLE_CALL_COUNT = 0
 PADDING_ORACLE_FALSE_COUNT = 0
 PADDING_ORACLE_TRUE_COUNT = 0
 
-stat_file = open("stat_4.csv","w",encoding="utf8")
+stat_file = open("stat_6.csv","w",encoding="utf8")
 
 def padding_oracle(cipher):
     global PADDING_ORACLE_CALL_COUNT
@@ -188,7 +188,13 @@ key = RSA.importKey(f.read())
 
 # cipher_hex = 'af:e2:ca:9f:5f:39:fa:a5:57:66:a0:9a:55:80:ff:57:11:03:61:6f:4e:67:10:02:af:60:35:9d:fa:2b:40:ee:5e:dd:33:de:0d:0c:b5:32:d2:8a:29:a3:2c:40:06:32:0b:1f:78:ee:c5:33:d8:3f:9f:63:99:f6:76:4d:4d:26:0d:f0:e3:22:48:d1:59:91:01:fe:07:09:5e:3f:56:bb:57:29:04:31:af:71:43:bb:c7:f8:3b:3d:75:e0:9e:cb:02:70:25:69:86:da:37:d7:b6:ad:24:d3:50:a4:b1:f9:9a:8a:9e:d3:9e:e1:c7:1d:7a:fb:d8:a7:fa:f3:7e:22'
 # cipher_hex = '14:ce:de:ef:3c:6b:40:fe:73:29:45:46:f9:08:0b:a7:59:3b:c9:9b:82:d5:81:1f:47:e9:61:ab:07:f2:5f:83:7f:a5:2d:14:3f:0f:f2:b2:77:37:a9:8f:bb:f1:59:7b:ce:27:fe:a1:42:f3:47:7b:97:94:a0:d3:61:28:91:0d:d9:7b:2f:39:f3:2a:7f:7b:de:0c:f4:5e:3f:74:fa:26:74:3c:a3:60:19:c4:99:42:f5:37:78:7f:20:ce:1d:14:41:49:76:61:b3:b5:2a:49:bc:95:14:13:86:e7:a9:cd:45:70:0d:45:c4:aa:b2:ab:89:f3:9c:35:d5:5b:cb:99'
-cipher_hex = '11:01:8e:96:8f:91:f5:48:a2:f9:d4:a7:10:cf:6e:ee:75:aa:8c:f2:ff:22:a4:76:6d:a9:a9:77:26:b5:29:23:d0:6a:d7:ad:35:f2:fc:2d:e0:df:11:a0:42:40:7f:93:72:1b:c1:45:60:5d:65:5b:36:bd:61:5d:ec:2b:05:94:c2:b5:51:b9:4e:89:7b:8f:e1:db:47:43:59:6f:07:2f:73:e4:5f:7e:59:8d:b9:a1:f9:02:7d:ad:7f:30:e7:a9:d7:06:d3:e3:c9:77:86:cb:95:ae:d4:e1:9b:d9:94:cf:83:b0:ff:b5:23:13:12:0b:7f:1d:2d:d2:c2:02:f0:dd'
+# cipher_hex = '11:01:8e:96:8f:91:f5:48:a2:f9:d4:a7:10:cf:6e:ee:75:aa:8c:f2:ff:22:a4:76:6d:a9:a9:77:26:b5:29:23:d0:6a:d7:ad:35:f2:fc:2d:e0:df:11:a0:42:40:7f:93:72:1b:c1:45:60:5d:65:5b:36:bd:61:5d:ec:2b:05:94:c2:b5:51:b9:4e:89:7b:8f:e1:db:47:43:59:6f:07:2f:73:e4:5f:7e:59:8d:b9:a1:f9:02:7d:ad:7f:30:e7:a9:d7:06:d3:e3:c9:77:86:cb:95:ae:d4:e1:9b:d9:94:cf:83:b0:ff:b5:23:13:12:0b:7f:1d:2d:d2:c2:02:f0:dd'
+
+# cipher_hex = '2c:ed:c6:aa:02:63:1f:a4:38:e3:22:8b:f3:6f:a5:fd:c7:53:19:ae:a2:d6:94:bb:20:9b:46:05:74:91:58:0a:ac:c4:38:06:c8:bd:15:b6:23:0d:05:ff:ae:88:9d:80:4e:c1:10:60:f5:74:90:60:94:35:88:aa:a7:79:55:11:60:e8:99:e8:0c:05:27:05:02:a0:6a:64:3d:ba:55:a7:00:78:2b:74:c8:f8:26:1f:07:cc:db:c1:f4:0b:78:3f:45:4f:85:eb:3b:42:83:43:b0:99:8e:af:4d:ef:56:09:04:cb:92:54:4c:14:7b:b2:32:13:c4:aa:ec:b3:13:1d'
+
+# cipher_hex = 'a8:0b:c0:ff:7d:3a:c2:27:51:db:31:2d:37:31:7d:e8:8a:e2:a9:4d:31:4b:d4:1e:68:a4:29:3a:87:0c:88:ec:85:e0:2f:03:39:18:ab:d3:1a:ad:da:37:25:05:3b:11:09:4c:45:8a:e2:b6:1a:c0:9a:be:21:aa:ed:79:a1:4f:f7:42:ee:80:87:e3:31:c1:19:a7:ca:7c:de:da:cd:f1:91:11:de:3a:23:3d:34:86:4c:dc:66:33:ed:52:6e:f7:9a:aa:48:b2:2d:25:8d:20:4c:6d:fc:69:62:67:6d:b6:5b:18:55:a3:ea:af:d5:43:98:19:5f:8e:04:dc:13:ac'
+cipher_hex = '9c:f6:78:d1:31:64:1f:48:aa:02:e9:85:0f:c0:20:88:13:ed:d3:b8:50:9c:0a:dc:4c:95:b1:69:85:cc:9b:80:d1:a1:bb:0e:a2:81:bf:a8:1d:7e:e5:6d:be:6e:3f:d7:b3:9e:40:a2:71:45:e0:17:f4:1f:61:f6:b5:22:f5:a2:f3:c8:86:25:03:81:03:82:fa:54:71:b4:65:7f:50:0f:33:be:f8:88:be:58:99:f7:67:6d:f6:0f:c7:64:e3:00:94:74:9b:e0:e6:c9:98:53:a7:e9:35:7f:66:00:ae:b9:e3:f4:23:bb:c8:00:50:f1:67:b8:06:24:1a:06:3f:c8'
+
 m = int(cipher_hex.replace(':',''),16)
 n = key.n 
 # n= 0X00e133440e6948ba3905e722442723bc5741fef35213731f3871de50c904676fefc836dc9253ead0a79dc89c42647d1614a3e167550e9890c379045e8822451fc83bf53ed66885654e9658bff02d5cdb13d5e28e9ac650c380552195ee5927eb51f9e6fbeef8fde1639f05b15e677958042d922e2f62c024071839e7602ddfed6f
