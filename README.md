@@ -1,5 +1,7 @@
 # cse5473_security_project
 
+Implementation of Bleichenbacher and POODLE SSLv3 Padding attack silumation using python. 
+
 MITM Detection
 ----------------------
 
